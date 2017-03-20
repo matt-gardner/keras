@@ -1136,7 +1136,8 @@ def any(x, axis=None, keepdims=False):
     """
     axis = _normalize_axis(axis, ndim(x))
     x = tf.cast(x, tf.bool)
-    return tf.reduce_any(x, reduction_indices=axis, keep_dims=keepdims)
+    x = tf.reduce_any(x, reduction_indices=axis, keep_dims=keepdims)
+    return tf.cast(x, tf.uint8)
 
 
 def all(x, axis=None, keepdims=False):
@@ -1152,7 +1153,8 @@ def all(x, axis=None, keepdims=False):
     """
     axis = _normalize_axis(axis, ndim(x))
     x = tf.cast(x, tf.bool)
-    return tf.reduce_all(x, reduction_indices=axis, keep_dims=keepdims)
+    x = tf.reduce_all(x, reduction_indices=axis, keep_dims=keepdims)
+    return tf.cast(x, tf.uint8)
 
 
 def argmax(x, axis=-1):
@@ -1315,7 +1317,8 @@ def equal(x, y):
     # Returns
         A bool tensor.
     """
-    return tf.equal(x, y)
+    result = tf.equal(x, y)
+    return tf.cast(result, tf.uint8)
 
 
 def not_equal(x, y):
@@ -1328,7 +1331,8 @@ def not_equal(x, y):
     # Returns
         A bool tensor.
     """
-    return tf.not_equal(x, y)
+    result = tf.not_equal(x, y)
+    return tf.cast(result, tf.uint8)
 
 
 def greater(x, y):
@@ -1341,7 +1345,8 @@ def greater(x, y):
     # Returns
         A bool tensor.
     """
-    return tf.greater(x, y)
+    result = tf.greater(x, y)
+    return tf.cast(result, tf.uint8)
 
 
 def greater_equal(x, y):
@@ -1354,7 +1359,8 @@ def greater_equal(x, y):
     # Returns
         A bool tensor.
     """
-    return tf.greater_equal(x, y)
+    result = tf.greater_equal(x, y)
+    return tf.cast(result, tf.uint8)
 
 
 def less(x, y):
@@ -1367,7 +1373,8 @@ def less(x, y):
     # Returns
         A bool tensor.
     """
-    return tf.less(x, y)
+    result = tf.less(x, y)
+    return tf.cast(result, tf.uint8)
 
 
 def less_equal(x, y):
@@ -1380,7 +1387,8 @@ def less_equal(x, y):
     # Returns
         A bool tensor.
     """
-    return tf.less_equal(x, y)
+    result = tf.less_equal(x, y)
+    return tf.cast(result, tf.uint8)
 
 
 def maximum(x, y):
